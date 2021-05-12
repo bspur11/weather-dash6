@@ -57,4 +57,59 @@ $(document).ready(function() {
             + "</div>"
         ); // End of append
 
+         // QueryURL to Open Weather App
+         var fiveDay = "https://api.openweathermap.org/data/2.5/onecall?"
+         + "lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=45e45c0bb2ef540df33fa21a29aafa8a";
+     console.log("fiveDay", fiveDay);
+
+     //AJAX call for Five Day & UV
+     $.ajax({
+         url: fiveDay,
+         method: "GET",
+     }).then(function(response) {
+
+          //icon urls
+          var iconUrl1 = "http://openweathermap.org/img/w/" + response.daily[0].weather[0].icon + ".png";
+          var iconUrl2 = "http://openweathermap.org/img/w/" + response.daily[1].weather[0].icon + ".png";
+          var iconUrl3 = "http://openweathermap.org/img/w/" + response.daily[2].weather[0].icon + ".png";
+          var iconUrl4 = "http://openweathermap.org/img/w/" + response.daily[3].weather[0].icon + ".png";
+          var iconUrl5 = "http://openweathermap.org/img/w/" + response.daily[4].weather[0].icon + ".png";
+
+          // Adding in UV Index to daily weather
+          $("#dailyWeather").append(
+              "<div class='col s12 m6'>"
+              + "<ul class='daily'>" + "UV Index: " + "<button class='w3-button' id='uvIndex' class='daily'>" + response.current.uvi + "</button>" + "</ul>"
+              + "</div>"
+          ); // End of append
+
+          // UV Index colors
+          if (response.current.uvi <= 2) {
+              $("#uvIndex").addClass("green");
+          } else if (response.current.uvi <= 5) {
+              $("#uvIndex").addClass("yellow");
+          } else if (response.current.uvi <= 7) {
+              $("#uvIndex").addClass("orange");
+          } else if (response.current.uvi <= 10) {
+              $("#uvIndex").addClass("red");
+          } else if (response.current.uvi <= 40) {
+              $("#uvIndex").addClass("purple");
+          };
+
+          // HEADER
+          $("#fiveDay").append(
+              "<div class='col-md-12'>"
+              + "<h2 id='fiveDay'>" + "5-Day Forecast:" + "</h2>"
+          ); // End of append
+
+          // DAY ONE DETAILS
+          $("#day1").append(
+              "<div class='fiveDayCard card col s12 m6'>"
+              +  "<div class='card-body'>"
+              +  "<div class='card-header'>" + day1 +"</div>"
+              +  "<div class='card-text'>" + "<img src='" + iconUrl1 + "'>" +"</div>"
+              +  "<div class='card-text'>" + "Temp: " + response.daily[0].temp.day + " °F" + "</div>"
+              +  "<div class='card-text'>" + "Humidity: " + response.daily[0].humidity + "%" + "</div>"
+              + "</div>"
+          ); // End of append
+
 
