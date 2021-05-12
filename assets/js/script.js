@@ -35,7 +35,7 @@ $(document).ready(function() {
 
         // QueryURL to Open Weather App for One Day
         var oneDay ="https://api.openweathermap.org/data/2.5/weather?q="
-            + cityInput + "&units=imperial" + "&appid=45e45c0bb2ef540df33fa21a29aafa8a";
+            + cityInput + "&units=metric" + "&appid=baadb8b3c155d192317c8b8f3b3d1729";
         console.log("oneDay", oneDay);
 
         //AJAX call for One Day
@@ -53,15 +53,15 @@ $(document).ready(function() {
             $("#dailyWeather").append(
                 "<div class='col s12 m6'>"
                 +  "<h2 class='daily'>" + response.name + " (" + startDate + ")" + "&nbsp" + "<img src='" + iconUrl  + "'>" + "</h2>"
-                +  "<ul class='daily'>" + "Temperature: " +  response.main.temp + " °F" + "</ul>"
+                +  "<ul class='daily'>" + "Temperature: " +  response.main.temp + " °C" + "</ul>"
                 +  "<ul class='daily'>" + "Humidity: " + response.main.humidity + "%" + "</ul>"
-                +  "<ul class='daily'>" + "Wind Speed: " +  response.wind.speed + " MPH" + "</ul>"
+                +  "<ul class='daily'>" + "Wind Speed: " +  response.wind.speed + " KPH" + "</ul>"
                 + "</div>"
             ); // End of append
 
             // QueryURL to Open Weather App
             var fiveDay = "https://api.openweathermap.org/data/2.5/onecall?"
-                + "lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=45e45c0bb2ef540df33fa21a29aafa8a";
+                + "lat=" + lat + "&lon=" + lon + "&units=metric" + "&appid=baadb8b3c155d192317c8b8f3b3d1729";
             console.log("fiveDay", fiveDay);
 
             //AJAX call for Five Day & UV
@@ -109,7 +109,7 @@ $(document).ready(function() {
                     +  "<div class='card-body'>"
                     +  "<div class='card-header'>" + day1 +"</div>"
                     +  "<div class='card-text'>" + "<img src='" + iconUrl1 + "'>" +"</div>"
-                    +  "<div class='card-text'>" + "Temp: " + response.daily[0].temp.day + " °F" + "</div>"
+                    +  "<div class='card-text'>" + "Temp: " + response.daily[0].temp.day + " °C" + "</div>"
                     +  "<div class='card-text'>" + "Humidity: " + response.daily[0].humidity + "%" + "</div>"
                     + "</div>"
                 ); // End of append
@@ -120,7 +120,7 @@ $(document).ready(function() {
                     +  "<div class='card-body'>"
                     +  "<div class='card-header'>" + day2 +"</div>"
                     +  "<div class='card-text'>" + "<img src='" + iconUrl2 + "'>" +"</div>"
-                    +  "<div class='card-text'>" + "Temp: " + response.daily[1].temp.day + " °F" + "</div>"
+                    +  "<div class='card-text'>" + "Temp: " + response.daily[1].temp.day + " °C" + "</div>"
                     +  "<div class='card-text'>" + "Humidity: " + response.daily[1].humidity + "%" + "</div>"
                     + "</div>"
                 ); // End of append
@@ -131,7 +131,7 @@ $(document).ready(function() {
                     +  "<div class='card-body'>"
                     +  "<div class='card-header'>" + day3 +"</div>"
                     +  "<div class='card-text'>" + "<img src='" + iconUrl3 + "'>" +"</div>"
-                    +  "<div class='card-text'>" + "Temp: " + response.daily[2].temp.day + " °F" + "</div>"
+                    +  "<div class='card-text'>" + "Temp: " + response.daily[2].temp.day + " °C" + "</div>"
                     +  "<div class='card-text'>" + "Humidity: " + response.daily[2].humidity + "%" + "</div>"
                     + "</div>"
                 ); // End of append
@@ -142,7 +142,7 @@ $(document).ready(function() {
                     +  "<div class='card-body'>"
                     +  "<div class='card-header'>" + day4 +"</div>"
                     +  "<div class='card-text'>" + "<img src='" + iconUrl4 + "'>" +"</div>"
-                    +  "<div class='card-text'>" + "Temp: " + response.daily[3].temp.day + " °F" + "</div>"
+                    +  "<div class='card-text'>" + "Temp: " + response.daily[3].temp.day + " °C" + "</div>"
                     +  "<div class='card-text'>" + "Humidity: " + response.daily[3].humidity + "%" + "</div>"
                     + "</div>"
                 ); // End of append
@@ -153,7 +153,7 @@ $(document).ready(function() {
                     +  "<div class='card-body'>"
                     +  "<div class='card-header'>" + day5 +"</div>"
                     +  "<div class='card-text'>" + "<img src='" + iconUrl5 + "'>" +"</div>"
-                    +  "<div class='card-text'>" + "Temp: " + response.daily[4].temp.day + " °F" + "</div>"
+                    +  "<div class='card-text'>" + "Temp: " + response.daily[4].temp.day + " °C" + "</div>"
                     +  "<div class='card-text'>" + "Humidity: " + response.daily[4].humidity + "%" + "</div>"
                     + "</div>"
                 ); // End of append
